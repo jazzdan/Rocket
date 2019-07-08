@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example
+  labels:
+    app: example
+    owner: varowner
+spec:
+  selector:
+    matchLabels:
+      app: example
+      owner: varowner
+  template:
+    metadata:
+      labels:
+        app: example
+        tier: web
+        owner: varowner
+    spec:
+      containers:
+      - name: example
+        image: example
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: "10m"
